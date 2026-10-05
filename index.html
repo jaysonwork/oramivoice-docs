@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OramiVoice — Documentation & Guides</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Official GitBook-style Documentation, Tutorials, and API Reference for OramiVoice AI Platform.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Docsify Core Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <style>
+    /* ========================================================== */
+    /* TOOL THEME & GITBOOK LUXURY DESIGN SYSTEM                 */
+    /* Matches OramiVoice Indigo Brand (#4f46e5)                  */
+    /* ========================================================== */
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --primary-glow: rgba(79, 70, 229, 0.25);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-sub: #475569;
+      --bg-page: #ffffff;
+      --bg-sidebar: #ffffff;
+      --border-color: #f1f5f9;
+      --border-dark: #e2e8f0;
+      --header-height: 60px;
+      --sidebar-width: 280px;
+      --toc-width: 250px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      margin: 0;
+      padding: 0;
+      letter-spacing: -0.012em;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ========================================================== */
+    /* TOP HEADER BAR (GITBOOK STYLE)                             */
+    /* ========================================================== */
+    .gitbook-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 1000;
+    }
+
+    .gitbook-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .gitbook-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .gitbook-logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+      transition: transform 0.15s ease;
+      background: #ffffff;
+    }
+
+    .gitbook-logo-link:hover .gitbook-logo-img {
+      transform: scale(1.06);
+    }
+
+    .gitbook-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+    }
+
+    .gitbook-logo-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #64748b;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      letter-spacing: 0;
+    }
+
+    .gitbook-header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Fast Search Pill - Optimized Single-Line Display */
+    .gitbook-search-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 8px 14px;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      cursor: pointer;
+      width: 300px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+
+    .gitbook-search-pill span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gitbook-search-pill:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .gitbook-search-pill kbd {
+      margin-left: auto;
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 5px;
+    }
+
+    .gitbook-btn-link {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-sub);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .gitbook-btn-link:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .gitbook-btn-primary {
+      font-size: 13.5px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #ffffff !important;
+      padding: 7px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+
+    .gitbook-btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ========================================================== */
+    /* LEFT SIDEBAR (TREE NAVIGATION)                             */
+    /* ========================================================== */
+    aside.sidebar {
+      top: var(--header-height) !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      width: var(--sidebar-width) !important;
+      background: var(--bg-sidebar) !important;
+      border-right: 1px solid var(--border-color) !important;
+      padding: 24px 16px 40px 16px !important;
+      overflow-y: auto !important;
+    }
+
+    aside.sidebar .app-name,
+    aside.sidebar .sidebar-logo {
+      display: none !important;
+    }
+
+    aside.sidebar .search {
+      display: none !important;
+    }
+
+    body > button.sidebar-toggle,
+    .sidebar-toggle,
+    .sidebar-toggle-button {
+      display: none !important;
+    }
+
+    .sidebar-nav ul {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+
+    .sidebar-nav > ul > li > p,
+    .sidebar-nav > ul > li > strong,
+    .sidebar-nav > ul > li > span {
+      display: block !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      margin: 22px 0 8px 10px !important;
+    }
+
+    .sidebar-nav > ul > li:first-child > p,
+    .sidebar-nav > ul > li:first-child > strong {
+      margin-top: 4px !important;
+    }
+
+    .sidebar-nav li a {
+      display: flex !important;
+      align-items: center !important;
+      font-size: 13.5px !important;
+      font-weight: 500 !important;
+      color: var(--text-sub) !important;
+      padding: 7px 12px !important;
+      margin: 2px 0 !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+      border-left: none !important;
+      transition: all 0.15s ease !important;
+    }
+
+    .sidebar-nav li a:hover {
+      color: var(--text-main) !important;
+      background: #f8fafc !important;
+      text-decoration: none !important;
+    }
+
+    /* Active Pill with Tool Indigo Theme */
+    .sidebar-nav li.active > a,
+    .sidebar-nav li a.active {
+      color: var(--primary) !important;
+      background: var(--primary-light) !important;
+      font-weight: 600 !important;
+      box-shadow: none !important;
+    }
+
+    .sidebar-nav ul ul {
+      padding-left: 0 !important;
+    }
+
+    /* ========================================================== */
+    /* CENTER MAIN CONTENT AREA                                   */
+    /* ========================================================== */
+    section.content {
+      top: var(--header-height) !important;
+      left: var(--sidebar-width) !important;
+      right: var(--toc-width) !important;
+      position: absolute !important;
+      padding: 0 !important;
+      transition: none !important;
+    }
+
+    article.markdown-section {
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      padding: 40px 48px 120px 48px !important;
+    }
+
+    /* Dynamic Breadcrumb */
+    .gitbook-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .gitbook-breadcrumb span.sep {
+      color: #cbd5e1;
+      font-weight: 400;
+    }
+
+    /* Typography & Headers */
+    .markdown-section h1 {
+      font-size: 34px !important;
+      font-weight: 800 !important;
+      color: var(--text-main) !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1.25 !important;
+      margin: 0 0 16px 0 !important;
+    }
+
+    .markdown-section h2 {
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: var(--text-main) !important;
+      letter-spacing: -0.02em !important;
+      margin-top: 48px !important;
+      margin-bottom: 16px !important;
+      padding-bottom: 8px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      scroll-margin-top: 80px;
+    }
+
+    .markdown-section h3 {
+      font-size: 16.5px !important;
+      font-weight: 700 !important;
+      color: #1e293b !important;
+      letter-spacing: -0.01em !important;
+      margin-top: 32px !important;
+      margin-bottom: 12px !important;
+      scroll-margin-top: 80px;
+    }
+
+    .markdown-section p,
+    .markdown-section li {
+      font-size: 15px !important;
+      line-height: 1.75 !important;
+      color: #334155 !important;
+    }
+
+    .markdown-section hr {
+      border: none !important;
+      border-top: 1px solid var(--border-color) !important;
+      margin: 40px 0 !important;
+    }
+
+    /* Content Link Styling */
+    .markdown-section a {
+      color: var(--primary) !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      transition: color 0.15s ease !important;
+    }
+
+    .markdown-section a:hover {
+      color: var(--primary-hover) !important;
+      text-decoration: underline !important;
+    }
+
+    /* Live Tool Link Pill Badge */
+    .markdown-section a.tool-direct-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--primary-light);
+      color: var(--primary) !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid var(--primary-border);
+      text-decoration: none !important;
+      transition: all 0.15s ease;
+    }
+
+    .markdown-section a.tool-direct-link:hover {
+      background: #e0e7ff;
+      border-color: #a5b4fc;
+      transform: translateY(-1px);
+    }
+
+    /* Inline Code */
+    .markdown-section code:not([class*="lang-"]) {
+      font-family: var(--font-mono) !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      padding: 3px 6px !important;
+      border-radius: 6px !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Code Blocks */
+    .markdown-section pre {
+      background: #0f172a !important;
+      border-radius: 12px !important;
+      padding: 16px 20px !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+      margin: 20px 0 !important;
+    }
+
+    .markdown-section pre code {
+      font-family: var(--font-mono) !important;
+      font-size: 13.5px !important;
+      color: #f8fafc !important;
+      background: transparent !important;
+      padding: 0 !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Images */
+    .markdown-section img {
+      border-radius: 12px !important;
+      border: 1px solid var(--border-dark) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+      max-width: 100% !important;
+      margin: 20px 0 !important;
+      display: block !important;
+    }
+
+    /* Callout & Blockquotes */
+    .markdown-section blockquote {
+      border-left: 3px solid var(--primary) !important;
+      background: #f8fafc !important;
+      padding: 14px 20px !important;
+      border-radius: 0 10px 10px 0 !important;
+      color: var(--text-sub) !important;
+      margin: 24px 0 !important;
+    }
+
+    /* Tables */
+    .markdown-section table {
+      width: 100% !important;
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+      border: 1px solid var(--border-dark) !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      margin: 24px 0 !important;
+    }
+
+    .markdown-section th {
+      background: #f8fafc !important;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      color: #475569 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.03em !important;
+      border-bottom: 1px solid var(--border-dark) !important;
+      padding: 12px 16px !important;
+    }
+
+    .markdown-section td {
+      padding: 12px 16px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      font-size: 14px !important;
+      color: #334155 !important;
+    }
+
+    .markdown-section tr:last-child td {
+      border-bottom: none !important;
+    }
+
+    /* ========================================================== */
+    /* DOCSIFY PAGINATION COMPACT REFINEMENT                      */
+    /* Fixes huge text in bottom tab switcher                     */
+    /* ========================================================== */
+    .docsify-pagination-container {
+      border-top: 1px solid var(--border-dark) !important;
+      margin: 56px 0 0 0 !important;
+      padding: 24px 0 0 0 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+    }
+
+    .pagination-item {
+      display: inline-flex !important;
+      flex-direction: column !important;
+      text-decoration: none !important;
+      max-width: 48% !important;
+      border: none !important;
+    }
+
+    .pagination-item--next {
+      text-align: right !important;
+      align-items: flex-end !important;
+      margin-left: auto !important;
+    }
+
+    .pagination-item span {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 4px !important;
+      display: inline-block !important;
+    }
+
+    .pagination-item-title,
+    .pagination-item .pagination-item-title,
+    .pagination-item--previous .pagination-item-title,
+    .pagination-item--next .pagination-item-title {
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: var(--text-main) !important;
+      margin: 0 !important;
+      line-height: 1.4 !important;
+      transition: color 0.15s ease !important;
+    }
+
+    .pagination-item:hover .pagination-item-title {
+      color: var(--primary) !important;
+    }
+
+    /* ========================================================== */
+    /* RIGHT SIDEBAR (ON THIS PAGE)                               */
+    /* ========================================================== */
+    .gitbook-right-toc {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      bottom: 0;
+      width: var(--toc-width);
+      padding: 36px 20px 40px 16px;
+      overflow-y: auto;
+      background: #ffffff;
+      border-left: 1px solid transparent;
+      z-index: 10;
+    }
+
+    .gitbook-toc-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+      padding-left: 12px;
+    }
+
+    .gitbook-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .gitbook-toc-item {
+      margin: 2px 0;
+    }
+
+    .gitbook-toc-link {
+      display: block;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #64748b;
+      text-decoration: none;
+      padding: 5px 0 5px 12px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s ease;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .gitbook-toc-link:hover {
+      color: var(--text-main);
+    }
+
+    /* Active State (Left Indigo border) */
+    .gitbook-toc-link.active {
+      color: var(--primary) !important;
+      font-weight: 600 !important;
+      border-left: 2px solid var(--primary) !important;
+      background: #f8fafc;
+    }
+
+    .gitbook-toc-h3 .gitbook-toc-link {
+      padding-left: 22px;
+      font-size: 12.5px;
+    }
+
+    .gitbook-right-toc.is-empty {
+      display: none;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 1200px) {
+      .gitbook-right-toc {
+        display: none !important;
+      }
+      section.content {
+        right: 0 !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      aside.sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+      body.sidebar-open aside.sidebar {
+        transform: translateX(0);
+      }
+      section.content {
+        left: 0 !important;
+        right: 0 !important;
+      }
+      article.markdown-section {
+        padding: 24px 20px 80px 20px !important;
+      }
+      .gitbook-search-pill {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================== -->
+  <!-- TOP HEADER (GITBOOK DESIGN)                                -->
+  <!-- ========================================================== */ -->
+  <header class="gitbook-header">
+    <div class="gitbook-header-left">
+      <a href="#/README.md" class="gitbook-logo-link">
+        <img src="assets/images/logo.png" alt="OramiVoice Logo" class="gitbook-logo-img">
+        <span class="gitbook-logo-text">Docs</span>
+        <span class="gitbook-logo-badge">v3.0</span>
+      </a>
+    </div>
+
+    <div class="gitbook-header-right">
+      <!-- Search Trigger Pill -->
+      <div class="gitbook-search-pill" onclick="triggerDocsSearch()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search documentation...</span>
+        <kbd>Ctrl K</kbd>
+      </div>
+
+      <!-- Dynamic Links to Main App (No Hardcoded Domain) -->
+      <a href="/" id="gitbookHomeBtn" target="_blank" class="gitbook-btn-link">Platform Home</a>
+      <a href="/speech.php" id="gitbookStudioBtn" target="_blank" class="gitbook-btn-primary">
+        <span>Open Voice Studio</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Docsify Container -->
+  <div id="app">Loading OramiVoice Documentation...</div>
+
+  <!-- Right TOC Container (100% English: ON THIS PAGE) -->
+  <aside id="gitbookRightToc" class="gitbook-right-toc">
+    <div class="gitbook-toc-header">ON THIS PAGE</div>
+    <ul id="gitbookTocList" class="gitbook-toc-list"></ul>
+  </aside>
+
+  <!-- Docsify Config -->
+  <script>
+    // Dynamically calculate main application root without hardcoding domain
+    function getAppRootUrl() {
+      const loc = window.location;
+      // 1. Cloudflare Pages docs subdomain -> point to main production domain
+      if (loc.hostname === 'docs.oramivoice.com') {
+        return 'https://oramivoice.com';
+      }
+      // 2. Localhost, Laragon, XAMPP or custom path (e.g. /wplus/oramivoice/docs/ or /oramivoice/docs/)
+      const docsIdx = loc.pathname.indexOf('/docs');
+      if (docsIdx !== -1) {
+        return loc.origin + loc.pathname.substring(0, docsIdx);
+      }
+      return loc.origin;
+    }
+
+    window.$docsify = {
+      name: 'Docs',
+      repo: '',
+      loadSidebar: true,
+      loadNavbar: false,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+      },
+      subMaxLevel: 0,
+      auto2top: true,
+      homepage: 'README.md',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search documentation...',
+        noData: 'No results found',
+        depth: 4
+      },
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true
+      },
+      plugins: [
+        function(hook, vm) {
+          // Post-processing DOM after Docsify renders markdown:
+          hook.doneEach(function() {
+            attachToolLinksToText();
+            resolveDynamicAppLinks();
+            renderGitbookBreadcrumb();
+            renderGitbookRightToc();
+          });
+        }
+      ]
+    };
+
+    // Helper: Safely attach direct tool links to text (e.g. /novel_ideas.php, /speech.php)
+    // Runs on paragraphs & list items only - NEVER touches headings to avoid any [ bracket bugs
+    function attachToolLinksToText() {
+      const appRoot = getAppRootUrl();
+      const containers = document.querySelectorAll('.markdown-section p, .markdown-section li');
+      const pattern = /(<strong>([^<]+)<\/strong>|([A-Z][A-Za-z0-9\s&-]{2,30}))\s*\((?:<code>)?(\/[a-zA-Z0-9_\-\.\?&=]+(?:\.php[^\s<>]*)?)(?:<\/code>)?\)/g;
+      
+      containers.forEach(el => {
+        if (el.querySelector('pre') || el.closest('pre')) return;
+        el.innerHTML = el.innerHTML.replace(pattern, function(match, p1, p2, p3, path) {
+          const rawText = p2 || p3;
+          const cleanText = rawText.replace(/^The\s+/, '').trim();
+          const prefix = (rawText.startsWith('The ') && !p2) ? 'The ' : '';
+          const fullUrl = appRoot + (path.startsWith('/') ? '' : '/') + path;
+          return `${prefix}<a href="${fullUrl}" target="_blank" rel="noopener noreferrer" class="tool-direct-link">${cleanText}</a>`;
+        });
+      });
+    }
+
+    // Helper: Dynamically attach main domain to all app links without hardcoding
+    function resolveDynamicAppLinks() {
+      const appRoot = getAppRootUrl();
+
+      // Update header buttons
+      const homeBtn = document.getElementById('gitbookHomeBtn');
+      const studioBtn = document.getElementById('gitbookStudioBtn');
+      if (homeBtn) homeBtn.href = appRoot + '/';
+      if (studioBtn) studioBtn.href = appRoot + '/speech.php';
+
+      // Update all .php links inside markdown content
+      const contentLinks = document.querySelectorAll('.markdown-section a[href*=".php"], .markdown-section a[href^="/"]');
+      contentLinks.forEach(link => {
+        const rawHref = link.getAttribute('href');
+        if (!rawHref) return;
+
+        // Skip internal docs anchors or external absolute URLs
+        if (rawHref.startsWith('http://') || rawHref.startsWith('https://') || rawHref.startsWith('#')) {
+          return;
+        }
+
+        // Prepend dynamic app root and open in new tab
+        link.href = appRoot + (rawHref.startsWith('/') ? '' : '/') + rawHref;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.classList.add('tool-direct-link');
+      });
+    }
+
+    // Helper: Trigger Docsify Native Search
+    function triggerDocsSearch() {
+      const searchInput = document.querySelector('.sidebar .search input');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+    }
+
+    // Shortcut: Ctrl+K or Cmd+K
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        triggerDocsSearch();
+      }
+    });
+
+    // Helper: Generate Top Breadcrumb
+    function renderGitbookBreadcrumb() {
+      const activeLink = document.querySelector('.sidebar-nav li.active > a');
+      const article = document.querySelector('.markdown-section');
+      if (!article) return;
+
+      const existingBreadcrumb = article.querySelector('.gitbook-breadcrumb');
+      if (existingBreadcrumb) existingBreadcrumb.remove();
+
+      let categoryName = 'Documentation';
+      let pageName = '';
+
+      if (activeLink) {
+        pageName = activeLink.textContent.trim();
+        const parentUl = activeLink.closest('ul');
+        if (parentUl && parentUl.parentElement) {
+          const catElem = parentUl.parentElement.querySelector('p, strong, span');
+          if (catElem) categoryName = catElem.textContent.trim();
+        }
+      }
+
+      if (pageName) {
+        const breadcrumb = document.createElement('div');
+        breadcrumb.className = 'gitbook-breadcrumb';
+        breadcrumb.innerHTML = `<span>${categoryName}</span> <span class="sep">/</span> <span>${pageName}</span>`;
+        article.insertBefore(breadcrumb, article.firstChild);
+      }
+    }
+
+    // Helper: Generate Right TOC (ON THIS PAGE) with ScrollSpy
+    function renderGitbookRightToc() {
+      const tocContainer = document.getElementById('gitbookRightToc');
+      const tocList = document.getElementById('gitbookTocList');
+      if (!tocContainer || !tocList) return;
+
+      tocList.innerHTML = '';
+
+      const headings = document.querySelectorAll('.markdown-section h2, .markdown-section h3');
+      if (!headings || headings.length === 0) {
+        tocContainer.classList.add('is-empty');
+        return;
+      }
+      tocContainer.classList.remove('is-empty');
+
+      const items = [];
+      headings.forEach((h, index) => {
+        const id = h.getAttribute('id') || `section-${index}`;
+        const level = h.tagName.toLowerCase();
+        const title = h.innerText.replace(/^[#\s]+/, '').trim();
+
+        const li = document.createElement('li');
+        li.className = `gitbook-toc-item gitbook-toc-${level}`;
+        li.dataset.targetId = id;
+
+        const a = document.createElement('a');
+        a.className = 'gitbook-toc-link';
+        a.href = `${window.location.hash.split('?')[0]}?id=${id}`;
+        a.innerText = title;
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          h.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, null, a.href);
+          highlightActiveToc(id);
+        });
+
+        li.appendChild(a);
+        tocList.appendChild(li);
+        items.push({ id, element: h });
+      });
+
+      if (items.length > 0) {
+        highlightActiveToc(items[0].id);
+      }
+
+      function onScroll() {
+        const scrollPos = window.scrollY + 120;
+        let currentId = items[0]?.id;
+
+        for (let i = 0; i < items.length; i++) {
+          const top = items[i].element.getBoundingClientRect().top + window.scrollY;
+          if (scrollPos >= top) {
+            currentId = items[i].id;
+          } else {
+            break;
+          }
+        }
+        if (currentId) {
+          highlightActiveToc(currentId);
+        }
+      }
+
+      window.removeEventListener('scroll', window.__gitbookScrollHandler);
+      window.__gitbookScrollHandler = onScroll;
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    function highlightActiveToc(activeId) {
+      const allLinks = document.querySelectorAll('.gitbook-toc-link');
+      allLinks.forEach(link => {
+        const item = link.closest('.gitbook-toc-item');
+        if (item && item.dataset.targetId === activeId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  </script>
+
+  <!-- Docsify v4 Core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Docsify Plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+</body>
+</html>
